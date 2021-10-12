@@ -5,6 +5,10 @@ const routes = require('./routes');
 
 const app = express();
 
+setTimeout(() => {
+  console.log(Date.now())
+}, 1000);
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(helmet());
