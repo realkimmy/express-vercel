@@ -4,6 +4,7 @@ const { ErrorResponseObject } = require('./common/http');
 const routes = require('./routes');
 
 const app = express();
+const port = process.env.PORT || 3030; // default port to listen
 
 setTimeout(() => {
   console.log(Date.now())
@@ -16,5 +17,9 @@ app.use('/', routes);
 
 // default catch all handler
 app.all('*', (req, res) => res.status(404).json(new ErrorResponseObject('route not defined')));
+
+app.listen(port, () => {
+  console.log(`Server started at http://localhost:${port}`);
+});
 
 module.exports = app;
